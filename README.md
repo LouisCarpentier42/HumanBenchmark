@@ -12,15 +12,15 @@ supremacy. This repository is dedicated to crafting methods that
 shatter records, obliterate benchmarks, and showcase the undeniable 
 superiority of computers. Let the showdown begin.
 
-| Benchmark       | Description | Points | Percentile | Time |
-|-----------------|-------------|--------|------------|------|
-| Reaction Time   |             |        |            |      |
-| Visual Memory   |             |        |            |      |
-| Number memory   |             |        |            |      |
-| Verbal Memory   |             |        |            |      |
-| Typing          |             |        |            |      |
-| Aim Timer       |             |        |            |      |
-| Chimp Test      |             |        |            |      |
-| Sequence Memory |             |        |            |      |
+| Benchmark       | Description                                  | Score | Percentile | Time | Date              |
+|-----------------|----------------------------------------------|-------|------------|------|-------------------|
+| Reaction Time   | A simple tool to measure your reaction time. | 85 ms | 99.9       | /    | December 24, 2024 |
+| Visual Memory   |                                              |       |            |      |                   |
+| Number memory   |                                              |       |            |      |                   |
+| Verbal Memory   |                                              |       |            |      |                   |
+| Typing          |                                              |       |            |      |                   |
+| Aim Timer       |                                              |       |            |      |                   |
+| Chimp Test      |                                              |       |            |      |                   |
+| Sequence Memory |                                              |       |            |      |                   |
 
 This project is inspired by the [Human Benchmark Series](https://www.youtube.com/@codebulletsdayoff582) of [Code Bullet](https://www.youtube.com/@CodeBullet)

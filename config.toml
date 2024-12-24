@@ -1,0 +1,11 @@
+[general]
+start-key = 'esc'
+end-key = 'q'
+delay = 0.0001
+
+[reaction-time]
+nb-clicks = 5
+click-pause = 1
+auto-continue = true
+screenshot-width = 3
+screenshot-height = 3
