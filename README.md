@@ -14,7 +14,7 @@ superiority of computers. Let the showdown begin.
 
 | Benchmark       | Description                                  | Score | Percentile | Time | Date              |
 |-----------------|----------------------------------------------|-------|------------|------|-------------------|
-| Reaction Time   | A simple tool to measure your reaction time. | 85 ms | 99.9       | /    | December 24, 2024 |
+| Reaction Time   | A simple tool to measure your reaction time. | 78 ms | 99.9       | /    | December 24, 2024 |
 | Visual Memory   |                                              |       |            |      |                   |
 | Number memory   |                                              |       |            |      |                   |
 | Verbal Memory   |                                              |       |            |      |                   |

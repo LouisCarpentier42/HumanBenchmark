@@ -3,9 +3,9 @@ import toml
 import pyautogui
 import pymsgbox
 import keyboard
-import cv2
 import numpy as np
 import time
+import mss
 
 
 def main(root: str):
@@ -28,45 +28,47 @@ def main(root: str):
         return
 
     # Define the region for the screenshot
-    screenshot_region = (
-        int(pyautogui.center(start_screen_region).x) - config['reaction-time']['screenshot-width'] // 2,
-        int(start_screen_region.top),
-        config['reaction-time']['screenshot-width'],
-        config['reaction-time']['screenshot-height']
-    )
-    click_position = pyautogui.center(screenshot_region)
+    screenshot_region = {
+        'left': int(pyautogui.center(start_screen_region).x) - config['reaction-time']['screenshot-width'] // 2,
+        'top': int(start_screen_region.top),
+        'width': config['reaction-time']['screenshot-width'],
+        'height': config['reaction-time']['screenshot-height']
+    }
+    click_position = pyautogui.center(tuple(screenshot_region.values()))
 
     # Do a first click if auto clicking is on
     if config['reaction-time']['auto-continue']:
         pyautogui.click(*click_position)
 
-    # Do the benchmark
-    nb_clicks = 0
-    while not keyboard.is_pressed(config['general']['end-key']):
+    # Initialize an object to take screenshots
+    with mss.mss() as sct:
 
-        # Fail safe
-        pyautogui.failSafeCheck()
+        # Do the benchmark
+        nb_clicks = 0
+        while not keyboard.is_pressed(config['general']['end-key']):
 
-        # Take screenshot and convert to numpy array
-        image = pyautogui.screenshot(region=screenshot_region)
-        image = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+            # Fail safe
+            pyautogui.failSafeCheck()
 
-        # Get the mean rgb values from the image
-        (blue, green, red) = [np.mean(image[:, :, i]) for i in range(3)]
+            # Take screenshot and convert to numpy array
+            image = np.array(sct.grab(screenshot_region))
 
-        # Click if the screen is green
-        if green > red and green > blue:
-            pyautogui.click(*click_position)
-            nb_clicks += 1
-            time.sleep(config['reaction-time']['click-pause'])
+            # Get the mean rgb values from the image
+            (red, green, blue) = [np.mean(image[:, :, i]) for i in range(3)]
 
-            # Check if all clicks have been done
-            if nb_clicks >= config['reaction-time']['nb-clicks']:
-                return
-
-            # Check if automatic continue is on
-            if config['reaction-time']['auto-continue']:
+            # Click if the screen is green
+            if green > red and green > blue:
                 pyautogui.click(*click_position)
+                nb_clicks += 1
+                time.sleep(config['reaction-time']['click-pause'])
+
+                # Check if all clicks have been done
+                if nb_clicks >= config['reaction-time']['nb-clicks']:
+                    return
+
+                # Check if automatic continue is on
+                if config['reaction-time']['auto-continue']:
+                    pyautogui.click(*click_position)
 
     # Reset the pause to avoid side effects
     pyautogui.PAUSE = pause_cached

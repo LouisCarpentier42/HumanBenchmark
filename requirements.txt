@@ -4,3 +4,4 @@ keyboard==0.13.5
 numpy==2.2.1
 toml==0.10.2
 pymsgbox==1.0.9
+mss==10.0.0
