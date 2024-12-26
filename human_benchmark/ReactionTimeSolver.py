@@ -4,10 +4,11 @@ import numpy as np
 import time
 import mss
 
+from human_benchmark.Solver import Solver
 from human_benchmark.Controller import Controller
 
 
-class ReactionTimeSolver:
+class ReactionTimeSolver(Solver):
 
     nb_clicks: int
     screenshot_width: int
@@ -27,12 +28,12 @@ class ReactionTimeSolver:
         self.auto_continue = auto_continue
         self.click_pause = click_pause
 
-    def solve(self, controller: Controller, start_screen_region):
+    def solve(self, controller: Controller, game_region: tuple) -> None:
 
         # Define the region for the screenshot
         screenshot_region = {
-            'left': int(pyautogui.center(start_screen_region).x) - self.screenshot_width // 2,
-            'top': int(start_screen_region[1]),
+            'left': int(pyautogui.center(game_region).x) - self.screenshot_width // 2,
+            'top': int(game_region[1]),
             'width': self.screenshot_width,
             'height': self.screenshot_height
         }
@@ -48,9 +49,6 @@ class ReactionTimeSolver:
             # Do the benchmark
             nb_clicks = 0
             while not controller.should_stop():
-
-                # Fail safe
-                pyautogui.failSafeCheck()
 
                 # Take screenshot and convert to numpy array
                 image = np.array(sct.grab(screenshot_region))

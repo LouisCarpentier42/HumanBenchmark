@@ -1,0 +1,36 @@
+[project]
+name = "HumanBenchmark"
+version = "0.0.1"
+description = "Beat human benchmarks using machines"
+requires-python = "3.11"
+authors = [
+    {name = "Louis Carpentier", email = "louis.carpentier@homtail.com"}
+]
+keywords = ["human-vs-machine", "Benchmark"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11"
+]
+dynamic = ["dependencies"]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+repository = "https://github.com/LouisCarpentier42/HumanBenchmark"
+
+[build-system]
+requires = ["setuptools", "wheel", "build"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["human_benchmark", "human_benchmark.*"]
+namespaces = false
+
+[tool.setuptools.dynamic.dependencies]
+file = ["requirements.txt"]
