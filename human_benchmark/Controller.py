@@ -14,6 +14,7 @@ class Controller:
         self.stop_event = threading.Event()
 
     def start(self) -> None:
+        self.stop_event.clear()
         while not self.should_stop():
             event = keyboard.read_event()
             if event.event_type == keyboard.KEY_DOWN and event.name == self.stop_key:

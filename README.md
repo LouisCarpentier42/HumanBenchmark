@@ -78,12 +78,14 @@ The configuration-parameters which are independent of the benchmark.
 - ``start_key``: the key to press once the benchmark is open on the screen.
 - ``stop_key``: the key to press to stop the process.
 - ``delay``: the amount of delay after executing a construction with ``pyautogui``.
+- ``exit_after_benchmark``: Whether to program should close after solving a benchmark or not.  
 
 ```toml
 [general]
 start_key = 'esc'
 stop_key = 'q'
 delay = 0.0001
+exit_after_benchmark = false
 ```
 
 ### Reaction Time
