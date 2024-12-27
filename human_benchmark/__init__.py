@@ -3,15 +3,17 @@ import toml
 import pathlib
 import pyautogui
 
-from human_benchmark.ReactionTimeSolver import ReactionTimeSolver
 from human_benchmark.Controller import Controller
+from human_benchmark.ReactionTimeSolver import ReactionTimeSolver
+from human_benchmark.TargetAimerSolver import TargetAimerSolver
 
 __all__ = [
     'run'
 ]
 
 solvers = {
-    'reaction_time': ReactionTimeSolver
+    'reaction_time': ReactionTimeSolver,
+    'target_aimer': TargetAimerSolver
 }
 
 
@@ -35,21 +37,24 @@ def run(custom_config_path: str = None):
     if controller.should_stop():
         return
 
-    # TODO automatically infer the game based on which is open?
-    #  Probably based on the 'start_screen' image in the assets
-    benchmark = 'reaction_time'
-    print(f"Solving benchmark '{benchmark}'")
-
-    # Check if the start screen is found
-    try:
-        game_region = pyautogui.locateOnScreen(f'{pathlib.Path(__file__).parent}/assets/{benchmark}/start_screen.png', confidence=0.9)
-    except pyautogui.ImageNotFoundException:
-        print('Start screen not found!')
+    # Automatically infer the benchmark
+    selected_benchmark = None
+    game_region = None
+    for benchmark in solvers:
+        try:
+            selected_benchmark = benchmark
+            game_region = pyautogui.locateOnScreen(f'{pathlib.Path(__file__).parent}/assets/{benchmark}/start_screen.png', confidence=0.9)
+            break
+        except pyautogui.ImageNotFoundException:
+            pass
+    if selected_benchmark is None:
+        print('Benchmark not recognized!')
         return
+    print(f"Solving benchmark '{selected_benchmark}'")
 
     # Solve the task
-    solver = solvers[benchmark](**config[benchmark])
-    solver.solve(controller=controller, game_region=game_region)
+    solver = solvers[selected_benchmark](**config[selected_benchmark])
+    solver.solve(controller=controller, benchmark_region=game_region)
 
     # Reset the pause to avoid side effects
     pyautogui.PAUSE = pause_cached

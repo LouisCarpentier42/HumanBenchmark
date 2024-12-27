@@ -21,9 +21,10 @@ superiority of computers. Let the showdown begin.*
 
 ## Benchmarks
 
-| Benchmark     | Description                                              | Score | Percntile |
-|---------------|----------------------------------------------------------|-------|-----------|
-| Reaction Time | Click as quickly as possible once the screen turns green | 78 ms | 99.9      |
+| Benchmark     | Description                                                  | Score | Percntile |
+|---------------|--------------------------------------------------------------|-------|-----------|
+| Reaction Time | Click as quickly as possible once the screen turns green     | 78 ms | 99.9      |
+| Target Aimer  | Targets pop up, which must be clicked as quickly as possible | 50 ms | 100.0     |
 
 More benchmarks will be added in the future!
 
@@ -99,6 +100,21 @@ click_pause = 1
 auto_continue = true
 screenshot_width = 3
 screenshot_height = 3
+```
+
+### Target Aimer
+
+- ``nb_targets``: the number of targets to click. 
+- ``target_size``: the number of pixels that must have the target color before the solver considers that the target is shown.
+- ``quantile``: indicates which pixel with the target color to click (to avoid clicking other pixels with the same color).
+- ``click_pause``: the time (in seconds) to pause after clicking the screen. 
+
+```toml
+[target_aimer]
+nb_targets = 30
+target_size = 50
+quantile = 0.5
+click_pause = 0.015
 ```
 
 ## Credits

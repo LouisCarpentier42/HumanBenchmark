@@ -9,3 +9,9 @@ click_pause = 1
 auto_continue = true
 screenshot_width = 3
 screenshot_height = 3
+
+[target_aimer]
+nb_targets = 30
+target_size = 50
+quantile = 0.5
+click_pause = 0.015

@@ -2,6 +2,7 @@ import pyautogui
 import numpy as np
 import time
 import mss
+import pyscreeze
 
 from human_benchmark.Solver import Solver
 from human_benchmark.Controller import Controller
@@ -27,12 +28,12 @@ class ReactionTimeSolver(Solver):
         self.auto_continue = auto_continue
         self.click_pause = click_pause
 
-    def solve(self, controller: Controller, game_region: tuple) -> None:
+    def solve(self, controller: Controller, benchmark_region: pyscreeze.Box) -> None:
 
         # Define the region for the screenshot
         screenshot_region = {
-            'left': int(pyautogui.center(game_region).x) - self.screenshot_width // 2,
-            'top': int(game_region[1]),
+            'left': int(pyautogui.center(benchmark_region).x) - self.screenshot_width // 2,
+            'top': int(benchmark_region[1]),
             'width': self.screenshot_width,
             'height': self.screenshot_height
         }
