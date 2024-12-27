@@ -53,9 +53,9 @@ Once the script is running, open the benchmark you wish to solve. If the
 benchmark is open, press the start key (defined by the configuration file)
 to start solving the benchmark.
 
-> :bulb: **Warning** :bulb: 
+> :bulb: **Note** :bulb: 
 > 
-> Once the script is running, control over the mouse and keyboard will be
+> Once the program is running, control over the mouse and keyboard will be
 > taken over. To stop the script, you can either press the stop key (defined
 > in the configuration file), or you can move the mouse to the corner of
 > the screen to trigger the fail-safe check.
@@ -96,7 +96,7 @@ The configuration-parameters which are independent of the benchmark.
 - ``delay``: the amount of delay after executing a construction with ``pyautogui``.
 - ``exit_after_benchmark``: Whether to program should close after solving a benchmark or not.  
 
-> :bulb: **Warning** :bulb: 
+> :bulb: **Note** :bulb: 
 >
 > If ``exit_after_benchmark = false``, then the program will continue looping. Before 
 > starting to solve a benchmark (after the ``start_key`` has been pressed), the config
