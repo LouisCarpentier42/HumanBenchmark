@@ -10,7 +10,8 @@ from human_benchmark.TypingSolver import TypingSolver
 from human_benchmark.VerbalMemorySolver import VerbalMemorySolver
 
 __all__ = [
-    'run'
+    'run',
+    'save_default_config'
 ]
 
 solvers = {
@@ -61,6 +62,9 @@ def run(custom_config_path: str = None):
             continue
         print(f"Solving benchmark '{selected_benchmark}'")
 
+        # Reread the config after each iteration
+        config = toml.load(config_path)
+
         # Solve the task
         solver = solvers[selected_benchmark](**config[selected_benchmark])
         solver.solve(controller=controller, benchmark_region=game_region)
@@ -71,3 +75,9 @@ def run(custom_config_path: str = None):
 
     # Reset the pause to avoid side effects
     pyautogui.PAUSE = pause_cached
+
+
+def save_default_config(path):
+    config = toml.load(pathlib.Path(__file__).parent / 'assets' / 'config.toml')
+    with open(path, 'w') as f:
+        toml.dump(config, f)

@@ -66,11 +66,26 @@ The solvers can be customized via a configuration file in toml format. The
 default configuration file can be found [here](human_benchmark/assets/config.toml).
 The config file must contain multiple sections: one for the general configuration
 and one for the parameters of each benchmark. Below we describe the parameters.
-The examples show the default configuration file
+The examples show the default configuration file.
 
 > :warning: **Warning** :warning: 
 >
 > The configuration file must define all parameters, there are no default values.
+
+If you only wish to adjust certain parameters from the default config, 
+then you can call below code to create a copy of the default configuration
+file as follwos:
+```python
+import human_benchmark
+human_benchmark.save_default_config('new-config.toml')
+```
+This file can be adjusted as desired, after which you can pass 
+the path of this new configuration file to the ``human_benchmark.run()``
+method:
+```python
+import human_benchmark
+human_benchmark.run(custom_config_path='new-config.toml')
+```
 
 ### General
 
@@ -80,6 +95,13 @@ The configuration-parameters which are independent of the benchmark.
 - ``stop_key``: the key to press to stop the process.
 - ``delay``: the amount of delay after executing a construction with ``pyautogui``.
 - ``exit_after_benchmark``: Whether to program should close after solving a benchmark or not.  
+
+> :bulb: **Warning** :bulb: 
+>
+> If ``exit_after_benchmark = false``, then the program will continue looping. Before 
+> starting to solve a benchmark (after the ``start_key`` has been pressed), the config
+> file is reread. This means you can adjust the configuration file without having to 
+> restart the program. 
 
 ```toml
 [general]
@@ -162,7 +184,7 @@ path_to_tesseract = "C:/Program Files/Tesseract-OCR/tesseract.exe"
 
 ```toml
 delay_start = 0.1
-delay_click = 0.01
+delay_click = 0.025
 screenshot_x = 0.5
 screenshot_y = 0.48
 screenshot_width = 700
