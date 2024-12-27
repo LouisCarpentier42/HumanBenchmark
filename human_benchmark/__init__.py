@@ -7,6 +7,7 @@ from human_benchmark.Controller import Controller
 from human_benchmark.ReactionTimeSolver import ReactionTimeSolver
 from human_benchmark.TargetAimerSolver import TargetAimerSolver
 from human_benchmark.TypingSolver import TypingSolver
+from human_benchmark.VerbalMemorySolver import VerbalMemorySolver
 
 __all__ = [
     'run'
@@ -15,7 +16,8 @@ __all__ = [
 solvers = {
     'reaction_time': ReactionTimeSolver,
     'target_aimer': TargetAimerSolver,
-    'typing': TypingSolver
+    'typing': TypingSolver,
+    'verbal_memory': VerbalMemorySolver,
 }
 
 

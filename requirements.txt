@@ -6,3 +6,4 @@ toml==0.10.2
 pymsgbox==1.0.9
 mss==10.0.0
 PyScreeze==1.0.1
+pytesseract==0.3.13

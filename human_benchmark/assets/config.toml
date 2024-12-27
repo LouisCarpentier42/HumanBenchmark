@@ -22,3 +22,14 @@ delay_start = 1.5
 delay_key_press = 0
 text_height = 225
 path_to_tesseract = "C:/Program Files/Tesseract-OCR/tesseract.exe"
+
+[verbal_memory]
+delay_start = 0.1
+delay_click = 0.025
+screenshot_x = 0.5
+screenshot_y = 0.48
+screenshot_width = 700
+screenshot_height = 100
+confidence = 0.9
+max_score = 1000
+path_to_tesseract = "C:/Program Files/Tesseract-OCR/tesseract.exe"

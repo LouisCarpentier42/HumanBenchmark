@@ -34,7 +34,7 @@ class TypingSolver(Solver):
             # Same width as the start screen
             int(benchmark_region.width),
             # Height is defined by the user
-            self.text_height,
+            self.text_height
         )
 
         # Opening the image & storing it in an image object
@@ -43,8 +43,7 @@ class TypingSolver(Solver):
         # Set the location of the tesseract.exe
         pytesseract.tesseract_cmd = self.path_to_tesseract
 
-        # Passing the image object to image_to_string() function
-        # This function will extract the text from the image
+        # Extract the text from the image
         text = pytesseract.image_to_string(image)
 
         # Click once to make sure you are in the correct position
@@ -54,7 +53,7 @@ class TypingSolver(Solver):
         formatted_text = text.strip('\n|[]').replace('\n', ' ').replace('|', 'I').replace('  ', ' ')
 
         # Remaining time before starting
-        time.sleep(self.delay_start - (time.time() - start_time))
+        time.sleep(max([0, self.delay_start - (time.time() - start_time)]))
 
         # Write the text
         keyboard.write(formatted_text, delay=self.delay_key_press)

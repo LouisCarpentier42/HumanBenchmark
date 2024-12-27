@@ -21,11 +21,12 @@ superiority of computers. Let the showdown begin.*
 
 ## Benchmarks
 
-| Benchmark     | Description                                                  | Score    | Percntile |
-|---------------|--------------------------------------------------------------|----------|-----------|
-| Reaction Time | Click as quickly as possible once the screen turns green     | 78 ms    | 99.9      |
-| Target Aimer  | Targets pop up, which must be clicked as quickly as possible | 50 ms    | 100.0     |
-| Typing        | Type a given text as quickly as possible                     | 5500 WPM | 100.0     |
+| Benchmark     | Description                                                              | Score    | Percntile |
+|---------------|--------------------------------------------------------------------------|----------|-----------|
+| Reaction Time | Click as quickly as possible once the screen turns green                 | 78 ms    | 99.9      |
+| Target Aimer  | Targets pop up, which must be clicked as quickly as possible             | 50 ms    | 100.0     |
+| Typing        | Type a given text as quickly as possible                                 | 5500 WPM | 100.0     |
+| Verbal Memory | Remember a sequence of words and indicate if a new word already occurred | 1000     | 100.0     |
 
 More benchmarks will be added in the future!
 
@@ -138,6 +139,36 @@ click_pause = 0.015
 delay_start = 1.5
 delay_key_press = 0
 text_height = 225
+path_to_tesseract = "C:/Program Files/Tesseract-OCR/tesseract.exe"
+```
+
+### Verbal Memory
+
+> :warning: **Warning** :warning: 
+>
+> For this benchmark, you should also install the [tesseract software](https://github.com/UB-Mannheim/tesseract/wiki). 
+> This benchmark has only been tested on Windows, and might not work on
+> mac or linux. 
+
+- ``delay_start``: the time (in seconds) before starting the solver.
+- ``delay_click``: the time (in seconds) to wait after clicking a button. 
+- ``screenshot_x``: the relative center of the word (in x-direction) compared to the start screen.
+- ``screenshot_y``: the relative center of the word (in y-direction) compared to the start screen.
+- ``screenshot_width``: the width of the screenshot containing the word. 
+- ``screenshot_height``: the height of the screenshot containing the word. 
+- ``confidence``: The confidence criteria for locating the different buttons.
+- ``max_score``: The maximum score, after which the script should stop. If set to ``-1``, there is no limit. 
+- ``path_to_tesseract``: the path to the tesseract.exe file. 
+
+```toml
+delay_start = 0.1
+delay_click = 0.01
+screenshot_x = 0.5
+screenshot_y = 0.48
+screenshot_width = 700
+screenshot_height = 100
+confidence = 0.9
+max_score = 1000
 path_to_tesseract = "C:/Program Files/Tesseract-OCR/tesseract.exe"
 ```
 
