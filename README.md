@@ -4,7 +4,7 @@
 
 *Since the dawn of time, humans have sought to prove their intellectual
 prowess, outshining one another in feats of memory, reaction, and 
-problem-solving. The [Human Benchmark](https://humanbenchmark.com/>)
+problem-solving. The [Human Benchmark](https://humanbenchmark.com/)
 stands as a modern battleground for these cerebral showdowns. But 
 the age of unchallenged human dominance is over. Machines have emerged, 
 relentless and tireless, as rivals in the race for intellectual 
@@ -50,6 +50,8 @@ Once the script is running, open the benchmark you wish to solve. If the
 benchmark is open, press the start key (defined by the configuration file)
 to start solving the benchmark.
 
+> :bulb: **Warning** :bulb: 
+> 
 > Once the script is running, control over the mouse and keyboard will be
 > taken over. To stop the script, you can either press the stop key (defined
 > in the configuration file), or you can move the mouse to the corner of
@@ -63,6 +65,8 @@ The config file must contain multiple sections: one for the general configuratio
 and one for the parameters of each benchmark. Below we describe the parameters.
 The examples show the default configuration file
 
+> :warning: **Warning** :warning: 
+>
 > The configuration file must define all parameters, there are no default values.
 
 ### General

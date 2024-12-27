@@ -1,4 +1,3 @@
-
 import pyautogui
 import numpy as np
 import time
@@ -48,7 +47,7 @@ class ReactionTimeSolver(Solver):
 
             # Do the benchmark
             nb_clicks = 0
-            while not controller.should_stop():
+            while not controller.should_stop() and nb_clicks < self.nb_clicks:
 
                 # Take screenshot and convert to numpy array
                 image = np.array(sct.grab(screenshot_region))
@@ -61,10 +60,6 @@ class ReactionTimeSolver(Solver):
                     pyautogui.click(*click_position)
                     nb_clicks += 1
                     time.sleep(self.click_pause)
-
-                    # Check if all clicks have been done
-                    if nb_clicks >= self.nb_clicks:
-                        return
 
                     # Check if automatic continue is on
                     if self.auto_continue:

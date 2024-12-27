@@ -2,7 +2,7 @@
 name = "HumanBenchmark"
 version = "0.0.1"
 description = "Beat human benchmarks using machines"
-requires-python = "3.11"
+requires-python = ">=3.10"
 authors = [
     {name = "Louis Carpentier", email = "louis.carpentier@homtail.com"}
 ]
@@ -31,6 +31,9 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.packages.find]
 include = ["human_benchmark", "human_benchmark.*"]
 namespaces = false
+
+[tool.setuptools.package-data]
+human_benchmark = ['assets/*']
 
 [tool.setuptools.dynamic.dependencies]
 file = ["requirements.txt"]
