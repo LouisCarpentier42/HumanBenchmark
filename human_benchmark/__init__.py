@@ -6,6 +6,7 @@ import pyautogui
 from human_benchmark.Controller import Controller
 from human_benchmark.ReactionTimeSolver import ReactionTimeSolver
 from human_benchmark.TargetAimerSolver import TargetAimerSolver
+from human_benchmark.TypingSolver import TypingSolver
 
 __all__ = [
     'run'
@@ -13,7 +14,8 @@ __all__ = [
 
 solvers = {
     'reaction_time': ReactionTimeSolver,
-    'target_aimer': TargetAimerSolver
+    'target_aimer': TargetAimerSolver,
+    'typing': TypingSolver
 }
 
 

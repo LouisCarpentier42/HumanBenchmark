@@ -21,10 +21,11 @@ superiority of computers. Let the showdown begin.*
 
 ## Benchmarks
 
-| Benchmark     | Description                                                  | Score | Percntile |
-|---------------|--------------------------------------------------------------|-------|-----------|
-| Reaction Time | Click as quickly as possible once the screen turns green     | 78 ms | 99.9      |
-| Target Aimer  | Targets pop up, which must be clicked as quickly as possible | 50 ms | 100.0     |
+| Benchmark     | Description                                                  | Score    | Percntile |
+|---------------|--------------------------------------------------------------|----------|-----------|
+| Reaction Time | Click as quickly as possible once the screen turns green     | 78 ms    | 99.9      |
+| Target Aimer  | Targets pop up, which must be clicked as quickly as possible | 50 ms    | 100.0     |
+| Typing        | Type a given text as quickly as possible                     | 5500 WPM | 100.0     |
 
 More benchmarks will be added in the future!
 
@@ -115,6 +116,27 @@ nb_targets = 30
 target_size = 50
 quantile = 0.5
 click_pause = 0.015
+```
+
+### Typing
+
+> :warning: **Warning** :warning: 
+>
+> For this benchmark, you should also install the [tesseract software](https://github.com/UB-Mannheim/tesseract/wiki). 
+> This benchmark has only been tested on Windows, and might not work on
+> mac or linux. 
+
+- ``delay_start``: time delay (in seconds) before starting to type. 
+- ``delay_key_press``: time delay (in seconds) between each key press.
+- ``text_height``: the height of the text box in pixels. 
+- ``path_to_tesseract``: the path to the tesseract.exe file. 
+
+```toml
+[typing]
+delay_start = 1.5
+delay_key_press = 0
+text_height = 225
+path_to_tesseract = "C:/Program Files/Tesseract-OCR/tesseract.exe"
 ```
 
 ## Credits
